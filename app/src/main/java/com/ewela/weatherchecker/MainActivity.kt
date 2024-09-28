@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import com.ewela.feature.searchlocation.di.searchLocationDiModule
 import com.ewela.weatherchecker.ui.content.WeatherCheckerContent
 import com.ewela.weatherchecker.ui.theme.WeatherCheckerTheme
 import org.koin.core.context.startKoin
@@ -32,6 +33,7 @@ class MainActivity : ComponentActivity() {
 
     private fun initDependencyInjection() {
         startKoin {
+            modules(searchLocationDiModule)
         }
     }
 }

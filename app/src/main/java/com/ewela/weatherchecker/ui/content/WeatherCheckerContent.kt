@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.ewela.feature.searchlocation.ui.SearchLocationLayout
 import com.ewela.weatherchecker.ui.navigation.SearchLocation
 import com.ewela.weatherchecker.ui.theme.WeatherCheckerTheme
 
@@ -31,6 +32,7 @@ private fun WeatherCheckerNavHost() {
         startDestination = SearchLocation
     ) {
         composable<SearchLocation> {
+            SearchLocationLayout()
         }
     }
 }

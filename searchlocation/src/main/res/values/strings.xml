@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search_location_label">Podaj lokalizację</string>
+    <string name="search_location_error">Pole nie może zawierać liczb ani znaków specjalnych.</string>
+</resources>

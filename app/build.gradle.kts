@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -69,4 +70,5 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     api(libs.koin.core)
     implementation(libs.kotlin.serialization)
+    implementation(project(":searchlocation"))
 }
