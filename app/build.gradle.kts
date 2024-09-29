@@ -46,7 +46,7 @@ android {
     }
     packaging {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "META-INF/*"
         }
     }
 }
@@ -69,6 +69,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     api(libs.koin.core)
+    api(libs.koin.android)
     implementation(libs.kotlin.serialization)
     implementation(project(":searchlocation"))
 }

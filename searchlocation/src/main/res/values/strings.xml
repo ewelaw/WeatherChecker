@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="search_location_label">Podaj lokalizację</string>
-    <string name="search_location_error">Pole nie może zawierać liczb ani znaków specjalnych.</string>
+    <string name="search_location_query_error">Pole nie może być puste, zawierać liczb ani znaków specjalnych.</string>
+    <string name="search_location_suggestion_error">Wystapił błąd podczas ładowania danych, spróbuj ponownie.</string>
+    <string name="search_location_details_error">Wystapił błąd podczas ładowania danych, wybierz lokalizacje ponownie.</string>
 </resources>

@@ -20,6 +20,16 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
+    defaultConfig {
+        buildConfigField(
+            "String",
+            "PLACES_API_KEY",
+            "${project.findProperty("placesApiKey")}"
+        )
+    }
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {
@@ -37,4 +47,8 @@ dependencies {
     implementation(libs.koin.compose.viewmodel)
     implementation(libs.androidx.lifecycle.compose)
     debugImplementation(libs.androidx.ui.tooling)
+    implementation(libs.places)
+    implementation(libs.koin.android)
+    implementation(libs.mockk)
+    implementation(libs.junit.params)
 }
