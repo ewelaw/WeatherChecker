@@ -13,6 +13,7 @@ class IsSearchQueryValidUseCaseTest {
     private val useCase = IsSearchQueryValidUseCase()
     private fun testParameters() = arrayOf(
         arrayOf("Warszawa", true),
+        arrayOf("Starogard Gdńaski", true),
         arrayOf("Warszawa1", false),
         arrayOf("Warszawa&", false),
         arrayOf("$#", false),
