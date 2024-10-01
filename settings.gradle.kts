@@ -22,4 +22,5 @@ dependencyResolutionManagement {
 rootProject.name = "Weather Checker"
 include(":app")
 include(":searchlocation")
- 
+include(":data-weather")
+include(":core-network")

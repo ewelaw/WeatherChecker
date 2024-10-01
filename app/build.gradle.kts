@@ -72,4 +72,6 @@ dependencies {
     api(libs.koin.android)
     implementation(libs.kotlin.serialization)
     implementation(project(":searchlocation"))
+    implementation(project(":data-weather"))
+    implementation(project(":core-network"))
 }
