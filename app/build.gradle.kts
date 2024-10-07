@@ -69,7 +69,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     api(libs.koin.core)
-    api(libs.koin.android)
+    implementation(libs.koin.compose)
     implementation(libs.kotlin.serialization)
     implementation(project(":searchlocation"))
     implementation(project(":data-weather"))
