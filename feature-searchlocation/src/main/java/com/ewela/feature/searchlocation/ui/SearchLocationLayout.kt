@@ -5,10 +5,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ewela.feature.searchlocation.R
-import org.koin.compose.viewmodel.koinViewModel
+import com.ewela.feature.searchlocation.domain.model.Location
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun SearchLocationLayout(
+    goToDetails: (Location) -> Unit,
     viewModel: SearchLocationViewModel = koinViewModel<SearchLocationViewModel>()
 ) {
     val searchQuery = viewModel.locationQuery.collectAsStateWithLifecycle()
@@ -32,7 +34,9 @@ fun SearchLocationLayout(
         onLocationClick = {
             viewModel.onLocationClick(
                 location = it,
-                onSuccess = { location -> },
+                onSuccess = { location ->
+                    goToDetails(location)
+                },
                 onFailure = {
                     Toast.makeText(
                         context,

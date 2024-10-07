@@ -20,6 +20,7 @@ class WeatherCheckerApplication : Application() {
             androidContext(this@WeatherCheckerApplication)
             modules(
                 searchLocationDiModule,
+                weatherDetailsDiModule,
                 dataWeatherModule,
                 coreNetworkModule
             )

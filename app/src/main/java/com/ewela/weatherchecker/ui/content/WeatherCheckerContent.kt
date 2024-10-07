@@ -10,6 +10,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ewela.feature.searchlocation.ui.SearchLocationLayout
+import com.ewela.feature.weatherdetails.navigation.destination.WeatherDetailsRoute
+import com.ewela.feature.weatherdetails.ui.WeatherDetailsLayout
 import com.ewela.weatherchecker.ui.navigation.SearchLocation
 import com.ewela.weatherchecker.ui.theme.WeatherCheckerTheme
 
@@ -32,7 +34,20 @@ private fun WeatherCheckerNavHost() {
         startDestination = SearchLocation
     ) {
         composable<SearchLocation> {
-            SearchLocationLayout()
+            SearchLocationLayout(
+                goToDetails = { location ->
+                    navController.navigate(
+                        WeatherDetailsRoute(
+                            locationName = location.name,
+                            longitude = location.longitude.toString(),
+                            latitude = location.latitude.toString()
+                        )
+                    )
+                }
+            )
+        }
+        composable<WeatherDetailsRoute> {
+            WeatherDetailsLayout()
         }
     }
 }

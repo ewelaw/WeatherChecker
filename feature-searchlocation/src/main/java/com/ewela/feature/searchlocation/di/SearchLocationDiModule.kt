@@ -9,7 +9,8 @@ import com.ewela.feature.searchlocation.ui.SearchLocationViewModel
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.net.PlacesClient
 import org.koin.android.ext.koin.androidApplication
-import org.koin.compose.viewmodel.dsl.viewModel
+import org.koin.core.module.dsl.factoryOf
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 fun providePlacesClient(application: Application): PlacesClient {
@@ -21,9 +22,9 @@ fun providePlacesClient(application: Application): PlacesClient {
 }
 
 val searchLocationDiModule = module {
-    factory { IsSearchQueryValidUseCase() }
-    factory { GetLocationSuggestionUseCase(get()) }
-    factory { GetLocationDetailsUseCase(get()) }
+    factoryOf(::IsSearchQueryValidUseCase)
+    factoryOf(::GetLocationSuggestionUseCase)
+    factoryOf(::GetLocationDetailsUseCase)
     single<PlacesClient> { providePlacesClient(androidApplication()) }
-    viewModel { SearchLocationViewModel(get(), get(), get()) }
+    viewModelOf(::SearchLocationViewModel)
 }

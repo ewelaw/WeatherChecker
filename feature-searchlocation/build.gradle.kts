@@ -16,6 +16,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -26,9 +27,6 @@ android {
             "PLACES_API_KEY",
             "${project.findProperty("placesApiKey")}"
         )
-    }
-    buildFeatures {
-        buildConfig = true
     }
 }
 
@@ -44,11 +42,12 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.koin.compose.viewmodel)
     implementation(libs.androidx.lifecycle.compose)
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.places)
-    implementation(libs.koin.android)
+    implementation(libs.koin.compose)
+    implementation(libs.koin.compose.navigation)
     implementation(libs.mockk)
     implementation(libs.junit.params)
+    implementation(project(":common-ui"))
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="weather_details_temperature">Temperatura: %s°</string>
+    <string name="weather_details_temperature_feels_like">Temperatura odczuwalna: %s°</string>
+    <string name="weather_details_no_chance_of_rain">Brak opadów.</string>
+    <string name="weather_details_chance_of_rain">Możliwość opadów: %s mm/h</string>
+    <string name="weather_details_humidity">Wilgotność powietrza: %s%%</string>
+    <string name="weather_details_clouds">Stan zachmurzenia: %s%%</string>
+    <string name="weather_details_error_loading">Wystąpił błąd podczas pobierania danych, spróbuj ponownie.</string>
+</resources>
