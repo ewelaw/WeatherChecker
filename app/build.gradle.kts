@@ -71,7 +71,8 @@ dependencies {
     api(libs.koin.core)
     implementation(libs.koin.compose)
     implementation(libs.kotlin.serialization)
-    implementation(project(":searchlocation"))
+    implementation(project(":feature-searchlocation"))
+    implementation(project(":feature-weatherdetails"))
     implementation(project(":data-weather"))
     implementation(project(":core-network"))
 }
