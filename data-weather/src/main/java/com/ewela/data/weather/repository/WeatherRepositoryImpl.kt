@@ -7,5 +7,5 @@ internal class WeatherRepositoryImpl(private val weatherApi: WeatherApiProvider)
     WeatherRepository {
 
     override suspend fun getWeatherDetails(latitude: String, longitude: String) =
-        weatherApi.weatherApi.getCurrentWeather(lat = latitude, lon = longitude).toWeather()
+        weatherApi.weatherApi.getCurrentWeather(latitude = latitude, longitude = longitude).toWeather()
 }

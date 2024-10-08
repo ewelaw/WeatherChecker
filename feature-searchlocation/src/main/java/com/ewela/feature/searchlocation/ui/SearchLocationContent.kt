@@ -1,6 +1,8 @@
 package com.ewela.feature.searchlocation.ui
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,7 +12,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -20,6 +29,7 @@ import com.ewela.common.ui.LoaderContent
 import com.ewela.feature.searchlocation.R
 import com.ewela.feature.searchlocation.domain.model.Location
 import com.ewela.feature.searchlocation.ui.locationsuggestions.LocationSuggestionsContent
+import kotlinx.coroutines.delay
 
 @Composable
 fun SearchLocationContent(
@@ -35,11 +45,26 @@ fun SearchLocationContent(
     onLocationClick: (Location) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val localFocusManager = LocalFocusManager.current
+    val focusRequester = remember {
+        FocusRequester()
+    }
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(24.dp)
+            .padding(horizontal = 24.dp)
+            .pointerInput(Unit) {
+                detectTapGestures(onTap = {
+                    localFocusManager.clearFocus()
+                })
+            },
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Image(
+            modifier = Modifier.fillMaxWidth(),
+            painter = painterResource(id = R.drawable.logo),
+            contentDescription = "App logo"
+        )
         if (isLoadingBlockUi) {
             LoaderContent()
         } else {
@@ -48,7 +73,8 @@ fun SearchLocationContent(
                     query = searchQuery,
                     shouldShowLocationQueryError = shouldShowLocationQueryError,
                     onQueryChanged = onQueryChanged,
-                    onClearClick = onClearClick
+                    onClearClick = onClearClick,
+                    focusRequester = focusRequester
                 )
                 LocationSuggestionsContent(
                     onLocationClick = onLocationClick,
@@ -66,11 +92,17 @@ fun SearchLocationContent(
 private fun QueryTextField(
     query: String,
     shouldShowLocationQueryError: Boolean,
+    focusRequester: FocusRequester,
     onQueryChanged: (String) -> Unit,
     onClearClick: () -> Unit
 ) {
+    LaunchedEffect(Unit) {
+        delay(200)
+        focusRequester.requestFocus()
+    }
     OutlinedTextField(
         modifier = Modifier
+            .focusRequester(focusRequester)
             .fillMaxWidth(),
         value = query,
         onValueChange = onQueryChanged,
@@ -105,7 +137,7 @@ private fun QueryTextField(
                     color = MaterialTheme.colorScheme.error
                 )
             }
-        },
+        }
     )
 }
 

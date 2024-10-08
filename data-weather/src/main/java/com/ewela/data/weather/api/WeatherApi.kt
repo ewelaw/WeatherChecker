@@ -8,7 +8,7 @@ internal interface WeatherApi {
 
     @GET("/data/2.5/weather")
     suspend fun getCurrentWeather(
-        @Query("lat") lat: String,
-        @Query("lon") lon: String
+        @Query("lat") latitude: String,
+        @Query("lon") longitude: String
     ): WeatherApiResponse
 }
