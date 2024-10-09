@@ -1,6 +1,7 @@
 package com.ewela.feature.weatherdetails.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -99,9 +100,10 @@ private fun Weather.getImage() =
         else -> R.drawable.sun
     }
 
+@Composable
 private fun Int.getTemperatureColor() = when {
     this < 10 -> Color.Blue
-    this in 10..20 -> Color.Black
+    this in 10..20 -> if(isSystemInDarkTheme()) Color.Gray else Color.Black
     else -> Color.Red
 }
 
